@@ -90,7 +90,7 @@ export function Home({ onExplore }: HomeProps) {
 
       {/* Features preview */}
       <motion.div 
-        className="max-w-4xl mx-auto mt-24 grid grid-cols-1 sm:grid-cols-3 gap-6"
+        className="max-w-4xl mx-auto mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
@@ -110,6 +110,12 @@ export function Home({ onExplore }: HomeProps) {
           title="Team Map"
           description="Who owns what. Knowledge silos. Bus factor at a glance."
         />
+        <FeatureCard
+          icon="🛡️"
+          title="Security Scanner"
+          description="Detect secrets, CVEs, and supply chain risks with stunning 3D visualizations."
+          highlight
+        />
       </motion.div>
     </div>
   )
@@ -118,17 +124,34 @@ export function Home({ onExplore }: HomeProps) {
 function FeatureCard({ 
   icon, 
   title, 
-  description 
+  description,
+  highlight = false,
 }: { 
   icon: string
   title: string
-  description: string 
+  description: string
+  highlight?: boolean
 }) {
   return (
-    <div className="p-6 rounded-xl bg-[var(--color-bg-elevated)] border border-[var(--color-border-subtle)] hover:border-[var(--color-border)] transition-colors">
+    <div className={`
+      p-6 rounded-xl border transition-colors
+      ${highlight 
+        ? 'bg-gradient-to-br from-purple-500/10 to-blue-500/10 border-purple-500/30 hover:border-purple-500/50' 
+        : 'bg-[var(--color-bg-elevated)] border-[var(--color-border-subtle)] hover:border-[var(--color-border)]'
+      }
+    `}>
       <div className="text-3xl mb-3">{icon}</div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
       <p className="text-sm text-[var(--color-text-muted)]">{description}</p>
+      {highlight && (
+        <div className="mt-3 inline-flex items-center gap-1 text-xs text-purple-400 font-medium">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500" />
+          </span>
+          New
+        </div>
+      )}
     </div>
   )
 }

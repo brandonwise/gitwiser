@@ -12,6 +12,9 @@ import { CVEPanel } from './CVEPanel'
 import { SecretsList } from './SecretsList'
 import { DependencyGalaxy } from '../viz/DependencyGalaxy'
 import { SecurityTimeline } from '../viz/SecurityTimeline'
+import { Heartbeat } from '../viz/Heartbeat'
+import { AttackRadar } from '../viz/AttackRadar'
+import { RiskTerrain } from '../viz/RiskTerrain'
 import type { Commit } from '../../lib/github'
 import type { Dependency } from '../../lib/deps'
 import { scanForSecrets } from '../../lib/secrets'
@@ -194,14 +197,23 @@ export function SecurityView({ commits, dependencies = [], repoOwner, repoName }
 function OverviewTab({ commits }: { commits: Commit[] }) {
   return (
     <div className="space-y-6">
-      {/* Risk score dashboard */}
-      <RiskScoreDashboard showDetails />
+      {/* Risk score and heartbeat row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <RiskScoreDashboard showDetails />
+        <Heartbeat size="md" showStats />
+      </div>
       
       {/* Security timeline */}
       <SecurityTimeline commits={commits} />
       
+      {/* Advanced visualizations row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <AttackRadar size={350} />
+        <RiskTerrain width={500} height={350} />
+      </div>
+      
       {/* Quick insights grid */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="rounded-xl bg-[var(--color-bg-elevated)] border border-[var(--color-border-subtle)] p-4">
           <h4 className="font-medium mb-3 flex items-center gap-2">
             <span>🔑</span> Top Secrets
