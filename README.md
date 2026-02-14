@@ -1,4 +1,4 @@
-# gitsweep
+# gitwiser
 
 **Git repository health check.**
 
@@ -12,56 +12,56 @@ One CLI to analyze any repo:
 ## Installation
 
 ```bash
-npm install -g gitsweep
+npm install -g gitwiser
 ```
 
 ## Quick Start
 
 ```bash
 # Full health check
-gitsweep
+gitwiser
 
 # Specific checks
-gitsweep authors      # Duplicate detection
-gitsweep flags        # Stale feature flags
-gitsweep bloat        # Large files
+gitwiser authors      # Duplicate detection
+gitwiser flags        # Stale feature flags
+gitwiser bloat        # Large files
 
 # CI mode
-gitsweep ci --fail-on-secrets
+gitwiser ci --fail-on-secrets
 ```
 
 ## Commands
 
-### `gitsweep` / `gitsweep analyze`
+### `gitwiser` / `gitwiser analyze`
 
 Run full repository analysis.
 
 ```bash
-gitsweep                          # All checks
-gitsweep --include authors,flags  # Specific modules
-gitsweep --output json            # JSON output
+gitwiser                          # All checks
+gitwiser --include authors,flags  # Specific modules
+gitwiser --output json            # JSON output
 ```
 
-### `gitsweep authors`
+### `gitwiser authors`
 
 Detect duplicate Git identities and generate .mailmap files.
 
 ```bash
-gitsweep authors                  # Text summary
-gitsweep authors --output mailmap # Generate .mailmap
-gitsweep authors --apply          # Write .mailmap file
-gitsweep authors --threshold 80   # Higher match threshold
+gitwiser authors                  # Text summary
+gitwiser authors --output mailmap # Generate .mailmap
+gitwiser authors --apply          # Write .mailmap file
+gitwiser authors --threshold 80   # Higher match threshold
 ```
 
-### `gitsweep flags`
+### `gitwiser flags`
 
 Find stale feature flags (hardcoded to true/false).
 
 ```bash
-gitsweep flags                 # Text summary
-gitsweep flags --stale-only    # Only stale flags
-gitsweep flags --diff          # Generate cleanup patches
-gitsweep flags --output json   # JSON for CI
+gitwiser flags                 # Text summary
+gitwiser flags --stale-only    # Only stale flags
+gitwiser flags --diff          # Generate cleanup patches
+gitwiser flags --output json   # JSON for CI
 ```
 
 Detects patterns from:
@@ -69,36 +69,36 @@ Detects patterns from:
 - Environment variables (`FEATURE_*`)
 - Generic patterns (`isFeatureEnabled()`, etc.)
 
-### `gitsweep bloat`
+### `gitwiser bloat`
 
 Find large files bloating your repository.
 
 ```bash
-gitsweep bloat                    # Top 20 largest
-gitsweep bloat --limit 50         # More files
-gitsweep bloat --include-deleted  # Include deleted files
-gitsweep bloat --min-size 5242880 # 5MB minimum
+gitwiser bloat                    # Top 20 largest
+gitwiser bloat --limit 50         # More files
+gitwiser bloat --include-deleted  # Include deleted files
+gitwiser bloat --min-size 5242880 # 5MB minimum
 ```
 
-### `gitsweep visualize`
+### `gitwiser visualize`
 
 Launch web UI for interactive visualization.
 
 ```bash
-gitsweep visualize             # Open in browser
-gitsweep viz --port 8080       # Custom port
+gitwiser visualize             # Open in browser
+gitwiser viz --port 8080       # Custom port
 ```
 
-### `gitsweep ci`
+### `gitwiser ci`
 
 CI/CD mode with JSON output and exit codes.
 
 ```bash
-gitsweep ci                         # Run all checks
-gitsweep ci --fail-on-secrets       # Exit 1 if secrets found
-gitsweep ci --fail-on-stale-flags   # Exit 1 if stale flags
-gitsweep ci --fail-on-bloat 10      # Exit 1 if files > 10MB
-gitsweep ci --fail-on-duplicates    # Exit 1 if duplicate authors
+gitwiser ci                         # Run all checks
+gitwiser ci --fail-on-secrets       # Exit 1 if secrets found
+gitwiser ci --fail-on-stale-flags   # Exit 1 if stale flags
+gitwiser ci --fail-on-bloat 10      # Exit 1 if files > 10MB
+gitwiser ci --fail-on-duplicates    # Exit 1 if duplicate authors
 ```
 
 ## Example Output
@@ -123,12 +123,12 @@ Consolidation rate: 15.6%
 
 ## Alias
 
-Short alias `gsw` is also available:
+Short alias `gw` is also available:
 
 ```bash
-gsw authors
-gsw bloat
-gsw ci
+gw authors
+gw bloat
+gw ci
 ```
 
 ## License
