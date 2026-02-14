@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * gitaudit — Git Repository Health Check
+ * gitsweep — Git Repository Health Check
  * 
  * Detect duplicate authors, find stale flags, analyze bloat, visualize history.
  */
@@ -17,7 +17,7 @@ import { ciCommand } from './commands/ci.js';
 const VERSION = '1.0.0';
 
 program
-  .name('gitaudit')
+  .name('gitsweep')
   .description('Git repository health check — authors, flags, bloat, security')
   .version(VERSION);
 
