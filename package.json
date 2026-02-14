@@ -1,11 +1,11 @@
 {
-  "name": "gitpulse",
+  "name": "gitaudit",
   "version": "1.0.0",
   "description": "Git repository health check — detect duplicate authors, find stale flags, analyze bloat, visualize history",
   "type": "module",
   "bin": {
-    "gitpulse": "./cli/index.js",
-    "gp": "./cli/index.js"
+    "gitaudit": "./cli/index.js",
+    "ga": "./cli/index.js"
   },
   "main": "./cli/index.js",
   "exports": {
@@ -18,8 +18,7 @@
     "dev": "cd app && pnpm dev",
     "build": "cd app && pnpm build",
     "test": "node --test cli/**/*.test.js",
-    "lint": "eslint cli/",
-    "prepare": "cd app && pnpm install"
+    "lint": "eslint cli/"
   },
   "keywords": [
     "git",
@@ -36,11 +35,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brandonwise/gitpulse.git"
+    "url": "https://github.com/brandonwise/gitaudit.git"
   },
-  "homepage": "https://github.com/brandonwise/gitpulse#readme",
+  "homepage": "https://github.com/brandonwise/gitaudit#readme",
   "bugs": {
-    "url": "https://github.com/brandonwise/gitpulse/issues"
+    "url": "https://github.com/brandonwise/gitaudit/issues"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -1,4 +1,4 @@
-# gitpulse
+# gitaudit
 
 **Git repository health check.**
 
@@ -12,56 +12,56 @@ One CLI to analyze any repo:
 ## Installation
 
 ```bash
-npm install -g gitpulse
+npm install -g gitaudit
 ```
 
 ## Quick Start
 
 ```bash
 # Full health check
-gitpulse
+gitaudit
 
 # Specific checks
-gitpulse authors      # Duplicate detection
-gitpulse flags        # Stale feature flags
-gitpulse bloat        # Large files
+gitaudit authors      # Duplicate detection
+gitaudit flags        # Stale feature flags
+gitaudit bloat        # Large files
 
 # CI mode
-gitpulse ci --fail-on-secrets
+gitaudit ci --fail-on-secrets
 ```
 
 ## Commands
 
-### `gitpulse` / `gitpulse analyze`
+### `gitaudit` / `gitaudit analyze`
 
 Run full repository analysis.
 
 ```bash
-gitpulse                       # All checks
-gitpulse --include authors,flags  # Specific modules
-gitpulse --output json         # JSON output
+gitaudit                       # All checks
+gitaudit --include authors,flags  # Specific modules
+gitaudit --output json         # JSON output
 ```
 
-### `gitpulse authors`
+### `gitaudit authors`
 
 Detect duplicate Git identities and generate .mailmap files.
 
 ```bash
-gitpulse authors               # Text summary
-gitpulse authors --output mailmap  # Generate .mailmap
-gitpulse authors --apply       # Write .mailmap file
-gitpulse authors --threshold 80    # Higher match threshold
+gitaudit authors               # Text summary
+gitaudit authors --output mailmap  # Generate .mailmap
+gitaudit authors --apply       # Write .mailmap file
+gitaudit authors --threshold 80    # Higher match threshold
 ```
 
-### `gitpulse flags`
+### `gitaudit flags`
 
 Find stale feature flags (hardcoded to true/false).
 
 ```bash
-gitpulse flags                 # Text summary
-gitpulse flags --stale-only    # Only stale flags
-gitpulse flags --diff          # Generate cleanup patches
-gitpulse flags --output json   # JSON for CI
+gitaudit flags                 # Text summary
+gitaudit flags --stale-only    # Only stale flags
+gitaudit flags --diff          # Generate cleanup patches
+gitaudit flags --output json   # JSON for CI
 ```
 
 Detects patterns from:
@@ -69,36 +69,36 @@ Detects patterns from:
 - Environment variables (`FEATURE_*`)
 - Generic patterns (`isFeatureEnabled()`, etc.)
 
-### `gitpulse bloat`
+### `gitaudit bloat`
 
 Find large files bloating your repository.
 
 ```bash
-gitpulse bloat                 # Top 20 largest
-gitpulse bloat --limit 50      # More files
-gitpulse bloat --include-deleted   # Include deleted files
-gitpulse bloat --min-size 5242880  # 5MB minimum
+gitaudit bloat                 # Top 20 largest
+gitaudit bloat --limit 50      # More files
+gitaudit bloat --include-deleted   # Include deleted files
+gitaudit bloat --min-size 5242880  # 5MB minimum
 ```
 
-### `gitpulse visualize`
+### `gitaudit visualize`
 
 Launch web UI for interactive visualization.
 
 ```bash
-gitpulse visualize             # Open in browser
-gitpulse viz --port 8080       # Custom port
+gitaudit visualize             # Open in browser
+gitaudit viz --port 8080       # Custom port
 ```
 
-### `gitpulse ci`
+### `gitaudit ci`
 
 CI/CD mode with JSON output and exit codes.
 
 ```bash
-gitpulse ci                         # Run all checks
-gitpulse ci --fail-on-secrets       # Exit 1 if secrets found
-gitpulse ci --fail-on-stale-flags   # Exit 1 if stale flags
-gitpulse ci --fail-on-bloat 10      # Exit 1 if files > 10MB
-gitpulse ci --fail-on-duplicates    # Exit 1 if duplicate authors
+gitaudit ci                         # Run all checks
+gitaudit ci --fail-on-secrets       # Exit 1 if secrets found
+gitaudit ci --fail-on-stale-flags   # Exit 1 if stale flags
+gitaudit ci --fail-on-bloat 10      # Exit 1 if files > 10MB
+gitaudit ci --fail-on-duplicates    # Exit 1 if duplicate authors
 ```
 
 ## Example Output

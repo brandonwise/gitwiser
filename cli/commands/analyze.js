@@ -68,7 +68,7 @@ export async function analyzeCommand(path, options) {
     }
     
     // Text output - overview
-    printHeader('gitpulse — Repository Health Check');
+    printHeader('gitaudit — Repository Health Check');
     
     printSubheader('Repository');
     if (github) {
